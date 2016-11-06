@@ -48,3 +48,8 @@ textarea {
     display: none
   }
 }
+
+/* Allows text next to the input*/
+.form-control{
+    display: inline;
+}

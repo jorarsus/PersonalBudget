@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using PersonalBudget.Data;
 using PersonalBudget.Models;
 using PersonalBudget.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace PersonalBudget
 {
@@ -47,7 +50,11 @@ namespace PersonalBudget
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -71,6 +78,21 @@ namespace PersonalBudget
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            var supportedCultures = new[]
+            {
+                new CultureInfo("es-ES"),
+                new CultureInfo("en-US"),
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                // Formatting numbers, dates, etc.
+                SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
+                SupportedUICultures = supportedCultures
+            });
+
             app.UseStaticFiles();
 
             app.UseIdentity();
@@ -81,7 +103,7 @@ namespace PersonalBudget
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Transactions}/{action=Index}/{id?}");
             });
         }
     }
