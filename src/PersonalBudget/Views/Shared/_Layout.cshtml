@@ -17,7 +17,16 @@
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="row">
+        <div class="title col-md-4">
+            <h1>Expense Budget</h1>
+        </div>
+        <div class="login col-md-8">
+            <b>@await Html.PartialAsync("_LoginPartial")</b>
+        </div>
+    </div>
+    
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,15 +35,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Transactions" asp-action="Index" class="navbar-brand">PersonalBudget</a>
+                @*<a asp-area="" asp-controller="Transactions" asp-action="Index" class="navbar-brand">PersonalBudget</a>*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Transactions" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a></li>
+                    <li><a asp-area="" asp-controller="Transactions" asp-action="Index">Menu 2</a></li>
+                    <li><a asp-area="" asp-controller="Transactions" asp-action="Index">Menu 3</a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>

@@ -1,14 +1,19 @@
 @model IEnumerable<PersonalBudget.Models.Transaction>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Transactions";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="row">
+    <ul class="control nav navbar-nav">
+        <li>
+            <a asp-action="Create"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Income</a>
+        </li>
+        <li>
+            <a asp-action="Create"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Add Expense</a>
+        </li>
+    </ul>
+</div>
 <table class="table">
     <thead>
         <tr>
