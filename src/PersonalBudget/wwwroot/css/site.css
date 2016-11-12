@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Wrapping element */
+﻿/* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -48,6 +43,33 @@ textarea {
     display: none
   }
 }
+
+/*****************************************/
+/* Down here are personal style rules (not scaffolding) */
+
+body{ font-size: 16px;}
+
+/* Title */
+.title h1{margin:10px 10px 10px 200px}
+
+
+/* Login */
+.login ul.nav {margin-right: 100px;}
+.login .nav a{color: black;padding-right: 40px;}
+
+/* Navbar */
+.navbar{background: linear-gradient(to right, #666666, #999999)}
+.navbar .navbar-collapse .navbar-nav a{
+    color:#ffffff;
+    padding-right: 100px;
+    font-size: 18px;
+}
+.navbar {border-radius: 0}
+
+/* Control bar */
+.glyphicon {font-size: 20px;top: 3px;}
+.glyphicon-plus-sign{color: darkgreen;}
+.glyphicon-minus-sign{color: darkred;}
 
 /* Allows text next to the input*/
 .form-control{
