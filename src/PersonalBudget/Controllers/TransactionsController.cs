@@ -23,10 +23,13 @@ namespace PersonalBudget.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            //var Value = 213;
-            //var CurrencyValue = Value.ToString("C", CultureInfo.CurrentCulture);
-            Console.WriteLine(CultureInfo.CurrentCulture);
-            return View(await _context.Transaction.ToListAsync());
+            var transactionQuery =
+                from transaction in _context.Transaction
+                group transaction by transaction.Date;
+
+
+            return View(await transactionQuery.ToListAsync());
+            //return View(await _context.Transaction.ToListAsync());
         }
 
         // GET: Transactions/Details/5

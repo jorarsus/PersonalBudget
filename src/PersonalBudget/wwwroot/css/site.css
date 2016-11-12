@@ -71,6 +71,38 @@ body{ font-size: 16px;}
 .glyphicon-plus-sign{color: darkgreen;}
 .glyphicon-minus-sign{color: darkred;}
 
+/* Table container */
+div.table-container{
+    background-color:darkgray;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    max-height:650px;
+    overflow:auto;
+}
+
+/* Main table */
+div.table-container td, div.table-container th{width:25%; text-align:right;}
+table.table tbody tr td{padding:3px;}
+
+/* Transaction group */
+div.transaction-group{
+    background-color:whitesmoke;
+    padding: 0px 20px 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+div.transaction-group th{text-align:left;}
+div.transaction-group table{
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+div.transaction-group tbody tr{
+    /*border: 2px solid black;*/
+    background-color:lightblue;
+    /*border-radius: 15px;*/
+}
+
 /* Allows text next to the input*/
 .form-control{
     display: inline;

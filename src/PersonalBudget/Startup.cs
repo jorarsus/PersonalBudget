@@ -105,6 +105,8 @@ namespace PersonalBudget
                     name: "default",
                     template: "{controller=Transactions}/{action=Index}/{id?}");
             });
+
+            SeedData.Initialize(app.ApplicationServices);
         }
     }
 }

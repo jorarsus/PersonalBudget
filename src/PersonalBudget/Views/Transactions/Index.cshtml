@@ -1,4 +1,4 @@
-@model IEnumerable<PersonalBudget.Models.Transaction>
+@model IEnumerable<IGrouping<DateTime,PersonalBudget.Models.Transaction>>
 
 @{
     ViewData["Title"] = "Transactions";
@@ -14,46 +14,62 @@
         </li>
     </ul>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Value)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Value)
-                &#8364 @*euro*@
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ElementAt(0).Value)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ElementAt(0).Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ElementAt(0).Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+    @foreach (var transactionGroup in Model)
+    {
+        <div class="transaction-group">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@transactionGroup.Key.ToString("dd/MM/yyyy")</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in transactionGroup)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => transaction.Value)
+                                &#8364 @*euro*@
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => transaction.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => transaction.Description)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@transaction.ID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@transaction.ID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@transaction.ID">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+
+                </table>
+            </div>
+                }
+</div>
