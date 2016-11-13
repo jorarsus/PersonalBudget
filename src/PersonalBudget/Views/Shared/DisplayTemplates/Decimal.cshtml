@@ -1,0 +1,6 @@
+﻿@model Decimal
+
+@{ 
+    var valueClass = (Model > 0) ? "positive-number" : "negative-number";
+}
+<b><span class="@valueClass">@Model</span> <text>€</text></b>

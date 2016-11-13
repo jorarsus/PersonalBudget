@@ -27,9 +27,18 @@ namespace PersonalBudget.Controllers
                 from transaction in _context.Transaction
                 group transaction by transaction.Date;
 
+            //foreach (var group in transactionQuery)
+            //{
+            //    Console.WriteLine($"{group.Key}");
+
+            //    foreach (var item  in group)
+            //    {
+            //        Console.WriteLine($"Date: {item.Date},  Value: {item.Value}");
+            //    }
+            //}
+
 
             return View(await transactionQuery.ToListAsync());
-            //return View(await _context.Transaction.ToListAsync());
         }
 
         // GET: Transactions/Details/5
